@@ -17,7 +17,9 @@
 				foreach($_SESSION['errors'] AS $error):?>
 				<p class="errors"><?=$error?></p>
 				<?php endforeach?>
-				<?php endif?>
+				<?php unset($_SESSION['errors']); ?>
+				<?php endif ?>
+				<?php if(isset($_SESSION['success'])): ?><p class="success"><?=$_SESSION['success']?></p><?php unset($_SESSION['success']); endif ?>
 				<label>First Name </label><input type="text" name="first_name">
 				<label>Last Name </label><input type="text" name="last_name">
 				<label>Email </label><input type="text" name="email">
@@ -31,6 +33,7 @@
 				<label>Email </label><input type="text" name="login_email">
 				<label>Password </label><input type="password" name="login_pswrd">
 				<input type="hidden" name="action" value="login">
+				<input type="submit" value="Login">
 			</form>
 		</div>
 	</body>

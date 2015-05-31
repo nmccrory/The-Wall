@@ -54,9 +54,72 @@ if(isset($_POST['action']) && $_POST['action'] == 'register'){
 		$salt = bin2hex(openssl_random_pseudo_bytes(22));
 		$encrypted_password = md5($_POST['password'] . '' . $salt);
 
-		$query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES ('{$esc_first_name}','{$esc_last_name}','{$esc_email}','{$encrypted_password}', NOW(), NOW())";
+		$query = "INSERT INTO users (first_name, last_name, email, password, salt,created_at, updated_at) VALUES ('{$esc_first_name}','{$esc_last_name}','{$esc_email}','{$encrypted_password}','{$salt}', NOW(), NOW())";
 		mysqli_query($connection, $query);
-		header('location: index.php');
+		$_SESSION['success'] = "Thanks for joining!";
+		header('location: wall.php');
 	}
 }
+
+//loging in
+if(isset($_POST['action']) && $_POST['action'] == "login")
+{
+	if(strlen($_POST['login_email']) < 1)
+	{
+		$errors[] = "Email address required.";
+	}
+
+	if(strlen($_POST['login_pswrd']) < 1)
+	{
+		$errors[] = "Password required.";
+	}
+
+	if(count($errors) > 0)
+	{
+		$_SESSION['errors'] = $errors;
+		header("Location: index.php");
+		exit();
+	}
+	else
+	{
+		$esc_email = mysqli_real_escape_string($connection, $_POST['login_email']);
+		$esc_email = strtolower($esc_email);
+
+		$query = "SELECT * FROM users WHERE email='{$esc_email}'";
+
+		$user = fetch($query);
+
+		if(!empty($user))
+		{
+			$encrypted_password = md5($_POST['login_pswrd'] . '' . $user['salt']);
+			if($encrypted_password != $user['password'])
+			{
+				$_SESSION['errors'] = array("Bad login credentials. (pass)");
+				header("Location: index.php");
+				exit();
+			}
+			elseif($encrypted_password == $user['password'])
+			{
+				$_SESSION['success'] = "Login successful!";
+
+				$_SESSION['logged_user'] = array("id" => $user['id'], "first_name" => $user['first_name'], "last_name"=>$user['last_name']);
+
+				header("location: wall.php");
+				exit();
+			}
+			else
+			{
+				die("something else happened.");
+			}
+		}
+		else
+		{
+			$_SESSION['errors'] = array("Bad login credentials.");
+			header("Location: index.php");
+			exit();
+		}
+	}
+
+}
+
 ?>
