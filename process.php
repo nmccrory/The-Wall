@@ -138,5 +138,10 @@ if(isset($_POST['action']) && $_POST['action'] == "login")
 	}
 
 }
-
+if(isset($_POST['action']) && $_POST['action'] == 'logout'){
+	session_unset();
+	session_destroy();
+	header('location:index.php');
+	exit();
+}
 ?>

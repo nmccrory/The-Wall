@@ -29,7 +29,7 @@
  				<h2>Post a message</h2>
  				<input type="hidden" name="action" value="post">
  				<textarea name="content"></textarea>
- 				<input type="submit" value="post">
+ 				<input class="message_post" type="submit" value="POST">
  			</form>
  		</div>
  		<div id="content_wrapper">
@@ -37,7 +37,7 @@
  			 ?><div class="user_post"><h5><?php echo "{$post['first_name']} {$post['last_name']}";?> - <?php echo "{$post['updated_at']}"; ?></h5>
  			 	<p><?php echo "{$post['message']}";?></p>
 		 	</div>
-		 	<div class="expander"></div>
+		 	<div class="expander">EXPAND COMMENTS</div>
 		 	<div class="comment_holder">
 		 		<?php 
 		 			$post_id = $post['id'];
@@ -48,17 +48,18 @@
 						ORDER BY comments.updated_at ASC;";
 					$comment_results = mysqli_query($connection, $comment_query);
 					foreach($comment_results as $comment):?><h5><?php echo "{$comment['first_name']} {$comment['last_name']} - {$comment['updated_at']}"; ?></h5>
-						<p><?php echo "{$comment['comment']}";?></p>
+						<p><?php echo "{$comment['comment']}";?></p><hr class="breaker">
 					<?php endforeach; ?>
 					<section id="comment_submit">
 			 		<form class="comment_form" action="post_process.php" method="post">
 			 			<input type='hidden' name='action' value="comments">
 			 			<input type="hidden" name="post_id" value=<?=$post['id']?>>
-			 			<textarea type="text" name="comment"></textarea>
-			 			<input type="submit" value="Comment">
+			 			<textarea type="text" placeholder="Add your comment here..." name="comment"></textarea>
+			 			<input type="submit" value="COMMENT">
 			 		</form>
 		 		</section>				
 		 	</div>
+		 	<div class="collapse">COLLAPSE COMMENTS</div>
 		 	<?php endforeach;?>
  		</div> 
  	</body>

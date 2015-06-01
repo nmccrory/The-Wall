@@ -1,6 +1,14 @@
 $(document).ready(function(){
+	$('.collapse').hide();
 	$('.expander').next().hide();
 	$('.expander').click(function(){
-		$(this).next().slideToggle(400);
-	})
+		$(this).next().slideDown(500);
+		$(this).slideUp(300);
+		$(this).next().next().slideDown(500);
+		$('.collapse').click(function(){
+			$(this).prev().slideUp(500);
+			$(this).slideUp(500);
+			$('.expander').slideDown(300);
+		})
+	})	
 })
