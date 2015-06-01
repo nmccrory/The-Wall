@@ -1,6 +1,11 @@
 <?php 
 	session_start();
-
+	if(isset($_SESSION['logged_user'])){
+		unset($_SESSION['logged_user']);
+	}
+	if(isset($_SESSION['success'])){
+		unset($_SESSION['success']);
+	}
  ?>
 <!DOCTYPE html>
 <html>

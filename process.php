@@ -57,7 +57,22 @@ if(isset($_POST['action']) && $_POST['action'] == 'register'){
 		$query = "INSERT INTO users (first_name, last_name, email, password, salt,created_at, updated_at) VALUES ('{$esc_first_name}','{$esc_last_name}','{$esc_email}','{$encrypted_password}','{$salt}', NOW(), NOW())";
 		mysqli_query($connection, $query);
 		$_SESSION['success'] = "Thanks for joining!";
-		header('location: wall.php');
+		$esc_email = mysqli_real_escape_string($connection, $_POST['email']);
+		$esc_email = strtolower($esc_email);
+
+		$query = "SELECT * FROM users WHERE email='{$esc_email}'";
+
+		$user = fetch($query);
+
+		if(!empty($user))
+		{
+			$_SESSION['success'] = "Login successful!";
+			/*if(isset($SESSION['logged_user'])){
+				unset($_SESSION['logged_user']);
+			}*/
+			$_SESSION['logged_user'] = array("id" => $user['id'], "first_name" => $user['first_name'], "last_name"=>$user['last_name']);
+			header('location: wall.php');
+		}
 	}
 }
 
@@ -101,7 +116,9 @@ if(isset($_POST['action']) && $_POST['action'] == "login")
 			elseif($encrypted_password == $user['password'])
 			{
 				$_SESSION['success'] = "Login successful!";
-
+				/*if(isset($SESSION['logged_user'])){
+					unset($_SESSION['logged_user']);
+				}*/
 				$_SESSION['logged_user'] = array("id" => $user['id'], "first_name" => $user['first_name'], "last_name"=>$user['last_name']);
 
 				header("location: wall.php");

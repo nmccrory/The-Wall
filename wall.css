@@ -16,39 +16,98 @@ form{
 h1,h2,h3,h4{
 	font-weight: 300;
 }
-input{
+/* id's */
+#login_container {
+	margin: 0 auto;
+	width: 50%;
+}
+#login_container input{
 	margin-left: 1em;
 	margin-top: .5em;
 	margin-bottom: 1.5em;
 	width: 150px;
 }
-#login_container {
-	margin: 0 auto;
-	width: 50%;
-}
 #navbar{
-	height: 40px;
+	height: 30px;
 	width:fill;
-	padding: 10px;
+	padding: 15px;
 	border-bottom: 1px solid gray;
+	margin-bottom: 1em;
 }
 #navbar span{
 	display:inline-block;
-	width:90%;
+	width:80%;
 	text-align: right;
+	vertical-align: top;
+}
+#navbar span p{
+	margin:0;
 }
 #navbar h3{
 	display:inline;
 	margin: 0;
-	margin-left: 2%;
+	padding:1em;
+	padding-top:1.5em;
+
 }
 #post_container{
 	margin:0 auto;
 	width: 50%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+#message_form{
+	
 }
 #message_form textarea{
-	width: 100%;
-	height:2em;
+	width: 500px;
+	height:5em;
+	margin-top: .5em;
+}
+#content_wrapper{
+	height: 100vh;
+	width: 50%;
+	padding-left: 5%;
+	padding-right: 5%;
+	margin: 0 auto;
+	outline: 1px solid #222;
+}
+#comment_form input{
+	display:inline-block;
+}
+
+/*classes*/
+.user_post{
+	height: auto;
+	width: 90%;
+	padding: 3%;
+	margin-top: .5em;
+	outline: 1px solid #222;
+	vertical-align: top;
+}
+.user_post h5{
+	margin:0;
+	font-weight: 600;
+}
+.user_post p {
+	margin: 0;
+	margin-left: 3%;
+	margin-top:2%;
+	
+}
+.comment_holder {
+	text-align: right;
+	height: 10vh;
+	margin:0;
+	width: 94%;
+	padding:1%;
+	vertical-align: top;
+	background-color: #01649B;
+	color: white;
+	margin-bottom: .5em;
+}
+.comment_holder p {
+	margin:0;
 }
 .errors {
 	color: #CF2A27;
