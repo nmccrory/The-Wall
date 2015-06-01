@@ -10,7 +10,7 @@ if(isset($_POST['action']) && $_POST['action'] == "post"){
 	}
 
 	if(count($errors) > 0){
-		$_SESSION['errors'] = $errors;
+		$_SESSION['wall_errors'] = $errors;
 		header("location: wall.php");
 		exit();
 	}else{

@@ -16,6 +16,9 @@
 	if(!isset($_SESSION['posts'])){
 		$_SESSION['posts'] = mysqli_query($connection, $_SESSION['get_posts']);
 	}
+	if(!isset($_SESSION['wall_errors'])){
+		$_SESSION['wall_errors'] = array();
+	}
 	
  ?>
  <!DOCTYPE html>
@@ -39,9 +42,10 @@
  		<div id="post_container">
  			<form id="message_form" action="post_process.php" method="post">
  				<h2>Post a message</h2>
+ 				<?php foreach($_SESSION['wall_errors'] as $error):?><p class="errors"><?=$error?></p><?php endforeach; unset($_SESSION['wall_errors']); ?>
  				<input type="hidden" name="action" value="post">
  				<textarea name="content"></textarea>
- 				<input class="message_post" type="submit" value="POST">
+ 				<input class="message_post" type="submit" value="Post">
  			</form>
  		</div>
  		<div id="content_wrapper">

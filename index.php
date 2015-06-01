@@ -13,9 +13,18 @@
 		<link rel="stylesheet" href="wall.css">
 	</head>
 	<body>
-		<div id="login_container">
+		<div id="index_head_container">
 			<h1>Welcome to The Wall</h1>
 			<h4>Please login or register</h4>
+		</div>
+		<div id="login_container">
+			<form action="process.php" method="post">
+				<h2>Login: </h2>
+				<label>Email </label><input type="text" name="login_email">
+				<label>Password </label><input type="password" name="login_pswrd">
+				<input type="hidden" name="action" value="login">
+				<input id="loginbutton" type="submit" value="Login">
+			</form>
 			<form action="process.php" method="post">
 				<h2>Register: </h2>
 				<?php if(isset($_SESSION['errors'])):
@@ -31,14 +40,7 @@
 				<label>Password </label><input type="password" name="password">
 				<label>Confirm Password </label><input type="password" name="conf_password">
 				<input type="hidden" name="action" value="register">
-				<input type="submit" value="Join!">
-			</form>
-			<form action="process.php" method="post">
-				<h2>Login: </h2>
-				<label>Email </label><input type="text" name="login_email">
-				<label>Password </label><input type="password" name="login_pswrd">
-				<input type="hidden" name="action" value="login">
-				<input type="submit" value="Login">
+				<input id="reg_button" type="submit" value="Join!">
 			</form>
 		</div>
 	</body>
