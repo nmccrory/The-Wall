@@ -1,5 +1,6 @@
 <?php 
 	include('process.php');
+	include('post_process.php');
 	if(isset($_SESSION['get_posts'])){
 		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
 		LEFT JOIN users ON messages.user_id = users.id 
@@ -22,6 +23,10 @@
  			<h3><?=$_SESSION['logged_user']['first_name']?>'s Wall</h3>
  			<span>
  				<p>Welcome, <?=$_SESSION['logged_user']['first_name']?> <?=$_SESSION['logged_user']['last_name']?></p>
+ 				<form action="process.php" method="post" id="logout_form">
+ 					<input type="hidden" name="action" value="logout">
+ 					<input type="submit" value="Log Out">
+ 				</form>
  			</span>
  		</div>
  		<div id="post_container">

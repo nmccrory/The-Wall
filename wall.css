@@ -80,7 +80,18 @@ h1,h2,h3,h4{
 	margin-top: 2%;
 	overflow:scroll;
 }
-
+#logout_form{
+	width:77vw;
+	display:inline-block;
+}
+#logout_form input{
+	background-color: transparent;
+	border:none;
+	outline:none;
+	color:white;
+	font-size: 10pt;
+	text-decoration: underline;
+}
 #comment_submit{
 text-align: right;
 padding-left:2%;
