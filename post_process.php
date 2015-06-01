@@ -28,7 +28,7 @@ if(isset($_POST['action']) && $_POST['action'] == "post"){
 	
 }
 if(isset($_POST['action']) && $_POST['action'] == "comments"){
-	$comment_body = $_POST['comment'];
+	$comment_body = mysqli_real_escape_string($connection, $_POST['comment']);
 	$post_id = $_POST['post_id'];
 	$add_comment = "INSERT INTO comments (comment, created_at, updated_at, post_id, user_id) VALUES ('{$comment_body}', NOW(), NOW(), '{$post_id}', '{$user_id}');";
 	mysqli_query($connection, $add_comment);

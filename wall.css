@@ -65,15 +65,21 @@ h1,h2,h3,h4{
 	margin-top: .5em;
 }
 #content_wrapper{
-	height: 100vh;
+	height: 72vh;
 	width: 50%;
 	padding-left: 5%;
 	padding-right: 5%;
 	margin: 0 auto;
-	outline: 1px solid #222;
+	margin-top: 2%;
+	overflow:scroll;
 }
-#comment_form input{
-	display:inline-block;
+
+#comment_submit{
+text-align: right;
+padding-left:2%;
+width:1em;
+margin-top: 2%;
+height:7vh;
 }
 
 /*classes*/
@@ -81,13 +87,16 @@ h1,h2,h3,h4{
 	height: auto;
 	width: 90%;
 	padding: 3%;
-	margin-top: .5em;
+	margin-top: 1em;
+	margin:0 auto;
 	outline: 1px solid #222;
 	vertical-align: top;
 }
 .user_post h5{
 	margin:0;
-	font-weight: 600;
+	font-weight: 500;
+	font-size: 8pt;
+	letter-spacing: .1px;
 }
 .user_post p {
 	margin: 0;
@@ -95,19 +104,56 @@ h1,h2,h3,h4{
 	margin-top:2%;
 	
 }
+.comment_form{
+	width: 45vw;
+}
+.comment_form input{
+	display:inline-block;
+	width: 10vw;
+	border: none;
+	outline: none;
+	color: white;
+	font-family: sans-serif;
+	font-weight:400;
+	font-size:10pt;
+	border-radius: 3px;
+	margin-left: 20vw;
+	background-color: #37363A;
+	display: inline-block;
+}
+.comment_form textarea {
+	width: 45vw;
+	height: 2vh;
+	display:inline-block;
+	text-align: right;
+}
+.expander{
+	width: 95%;
+	height: 2vh;
+	margin:0 auto;
+	outline: none;
+	border: none;
+	background-color:#00DD79;
+}
 .comment_holder {
 	text-align: right;
-	height: 10vh;
-	margin:0;
-	width: 94%;
+	margin:0 auto;
+	width: 93%;
+	height: auto;
 	padding:1%;
 	vertical-align: top;
-	background-color: #01649B;
+	background-color: #00DD79;
 	color: white;
 	margin-bottom: .5em;
 }
+.comment_holder h5{
+	margin:0;
+	margin-right:3.5%;
+	font-weight: 400;
+}
 .comment_holder p {
 	margin:0;
+	margin-right: 6%;
 }
 .errors {
 	color: #CF2A27;
