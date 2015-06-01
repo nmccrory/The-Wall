@@ -1,12 +1,19 @@
 <?php 
 	include('process.php');
-	include('post_process.php');
 	if(isset($_SESSION['get_posts'])){
 		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
 		LEFT JOIN users ON messages.user_id = users.id 
 		ORDER BY messages.updated_at DESC;";
 	}
 	if(isset($_SESSION['posts'])){
+		$_SESSION['posts'] = mysqli_query($connection, $_SESSION['get_posts']);
+	}
+	if(!isset($_SESSION['get_posts'])){
+		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
+		LEFT JOIN users ON messages.user_id = users.id 
+		ORDER BY messages.updated_at DESC;";
+	}
+	if(!isset($_SESSION['posts'])){
 		$_SESSION['posts'] = mysqli_query($connection, $_SESSION['get_posts']);
 	}
 	
