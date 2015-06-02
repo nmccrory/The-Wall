@@ -30,8 +30,10 @@
  	</head>
  	<body>
  		<div id="navbar">
- 			<h3><?=$_SESSION['logged_user']['first_name']?>'s Wall</h3>
- 			<span>
+ 			<span id="left_navbar">
+ 				<h3><?=$_SESSION['logged_user']['first_name']?>'s Wall</h3>
+ 			</span>
+ 			<span id="right_navbar">
  				<p>Welcome, <?=$_SESSION['logged_user']['first_name']?> <?=$_SESSION['logged_user']['last_name']?></p>
  				<form action="process.php" method="post" id="logout_form">
  					<input type="hidden" name="action" value="logout">
@@ -45,7 +47,9 @@
  				<?php foreach($_SESSION['wall_errors'] as $error):?><p class="errors"><?=$error?></p><?php endforeach; unset($_SESSION['wall_errors']); ?>
  				<input type="hidden" name="action" value="post">
  				<textarea name="content"></textarea>
- 				<input class="message_post" type="submit" value="Post">
+ 				<div id="post_but_container">
+ 					<input class="message_post" type="submit" value="Post">
+ 				</div>
  			</form>
  		</div>
  		<div id="content_wrapper">

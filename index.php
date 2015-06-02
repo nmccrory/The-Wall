@@ -25,6 +25,8 @@
 				<input type="hidden" name="action" value="login">
 				<input id="loginbutton" type="submit" value="Login">
 			</form>
+		</div>
+		<div id="register_container">
 			<form class="index_form" action="process.php" method="post">
 				<h2>Register: </h2>
 				<?php if(isset($_SESSION['errors'])):
