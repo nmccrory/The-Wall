@@ -80,7 +80,7 @@
 						ORDER BY comments.updated_at ASC;";
 					$comment_results = mysqli_query($connection, $comment_query);
 					$comment_array = $comment_results->fetch_all();
-					//checking if post contains any comments
+					//checking if post contains any comments - if no, display message
 					if(count($comment_array) === 0):?>
 				 		<p>No Comments yet!</p>
 					<?php endif; ?>

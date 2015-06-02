@@ -42,6 +42,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'register'){
 		$errors[] = "Passwords must match";
 	}
 
+	//main validation statement
 	if(count($errors) > 0 ){
 		$_SESSION['errors'] = $errors;
 		header("location: index.php");

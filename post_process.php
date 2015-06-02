@@ -4,11 +4,13 @@ require_once('connection.php');
 $errors = array();		
 $user_id = $_SESSION['logged_user']['id'];
 
+//post messages to wall
 if(isset($_POST['action']) && $_POST['action'] == "post"){
+	//message validation
 	if(empty($_POST['content'])){
 		$errors[] = "Please add some text to your post!";
 	}
-
+	//message insertion to DB
 	if(count($errors) > 0){
 		$_SESSION['wall_errors'] = $errors;
 		header("location: wall.php");
@@ -21,7 +23,7 @@ if(isset($_POST['action']) && $_POST['action'] == "post"){
 		header('location: wall.php');
 	}
 }
-
+//delete functions
 if(isset($_POST['action']) && $_POST['action'] == "delete"){
 	if($_POST['user_id'] == $user_id){
 		$message_id = $_POST['box_id'];
@@ -34,6 +36,8 @@ if(isset($_POST['action']) && $_POST['action'] == "delete"){
 	}
 	
 }
+
+//comment insertions
 if(isset($_POST['action']) && $_POST['action'] == "comments"){
 	$comment_body = mysqli_real_escape_string($connection, $_POST['comment']);
 	$post_id = $_POST['post_id'];
