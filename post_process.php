@@ -22,7 +22,18 @@ if(isset($_POST['action']) && $_POST['action'] == "post"){
 	}
 }
 
-
+if(isset($_POST['action']) && $_POST['action'] == "delete"){
+	if($_POST['user_id'] == $user_id){
+		$message_id = $_POST['box_id'];
+		$delete_query = "DELETE FROM messages WHERE messages.id = {$message_id};";
+		mysqli_query($connection, $delete_query);
+		header('location:wall.php');
+	}else{
+		$errors[] = "Cannot delete post created by another user.";
+		header('location:wall.php');
+	}
+	
+}
 if(isset($_POST['action']) && $_POST['action'] == "comments"){
 	$comment_body = mysqli_real_escape_string($connection, $_POST['comment']);
 	$post_id = $_POST['post_id'];

@@ -11,9 +11,6 @@ label{
 	clear:left;
 	display:block;
 }
-form{
-	width: 250px;
-}
 h1,h2,h3,h4,h5{
 	font-weight: 300;
 }
@@ -127,6 +124,9 @@ height:7vh;
 }
 
 /*classes*/
+.index_form{
+	width: 250px;
+}
 .user_post{
 	height: auto;
 	width: 88.8%;
@@ -142,6 +142,7 @@ height:7vh;
 	margin:0;
 	font-weight: 700;
 	font-size: 9pt;
+	display:inline-block;
 	letter-spacing: .1px;
 }
 .user_post p {
@@ -251,6 +252,14 @@ height:7vh;
 	font-family:sans-serif;
 	font-weight: 200;
 }
+.delete_button{
+	border:none;
+	color:white;
+	outline: none;
+	margin:0;
+	margin-left: 100%;
+	background-color: #D46D6A;
+}
 .breaker{
 	color:white;
 }
@@ -260,3 +269,32 @@ height:7vh;
 .success{
 	color:#009E0F;
 }
+
+@media all (min-width: 1200px){
+	.delete_form{
+		width:28vw;
+		height:2vh;
+		display:inline-block;
+	}
+	#navbar span {
+	  display: inline-block;
+	  width: 83vw;
+	  text-align: right;
+	  vertical-align: middle;
+	}
+
+}
+@media all (min-width:1000px){
+	.delete_form{
+		width:24vw;
+		height:2vh;
+		display:inline-block;
+	}
+	#navbar span {
+	  display: inline-block;
+	  width: 81vw;
+	  text-align: right;
+	  vertical-align: middle;
+	}
+}
+

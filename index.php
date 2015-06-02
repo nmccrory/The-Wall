@@ -18,14 +18,14 @@
 			<h4>Please login or register</h4>
 		</div>
 		<div id="login_container">
-			<form action="process.php" method="post">
+			<form class="index_form" action="process.php" method="post">
 				<h2>Login: </h2>
 				<label>Email </label><input type="text" name="login_email">
 				<label>Password </label><input type="password" name="login_pswrd">
 				<input type="hidden" name="action" value="login">
 				<input id="loginbutton" type="submit" value="Login">
 			</form>
-			<form action="process.php" method="post">
+			<form class="index_form" action="process.php" method="post">
 				<h2>Register: </h2>
 				<?php if(isset($_SESSION['errors'])):
 				foreach($_SESSION['errors'] AS $error):?>

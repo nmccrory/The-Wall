@@ -1,7 +1,7 @@
 <?php 
 	include('process.php');
 	if(isset($_SESSION['get_posts'])){
-		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
+		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, user_id,users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
 		LEFT JOIN users ON messages.user_id = users.id 
 		ORDER BY messages.updated_at DESC;";
 	}
@@ -9,7 +9,7 @@
 		$_SESSION['posts'] = mysqli_query($connection, $_SESSION['get_posts']);
 	}
 	if(!isset($_SESSION['get_posts'])){
-		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
+		$_SESSION['get_posts'] = "SELECT messages.id, message,users.first_name, user_id, users.last_name, DATE_FORMAT(messages.updated_at, '%l%p %M %e %Y') AS updated_at FROM messages 
 		LEFT JOIN users ON messages.user_id = users.id 
 		ORDER BY messages.updated_at DESC;";
 	}
@@ -51,6 +51,14 @@
  		<div id="content_wrapper">
  			<?php foreach($_SESSION['posts'] as $post):
  			 ?><div class="user_post"><h5><?php echo "{$post['first_name']} {$post['last_name']}";?> - <?php echo "{$post['updated_at']}"; ?></h5>
+ 			 	<form class="delete_form" action="post_process.php" method="post">
+ 			 		<input type="hidden" name="action" value="delete">
+ 			 		<input type="hidden" name="box_id" value=<?=$post['id']?>>
+ 			 		<input type="hidden" name="user_id" value=<?=$post['user_id']?>>
+ 			 		<?php if($_SESSION['logged_user']['id']==$post['user_id']): ?>
+ 			 			<input class="delete_button" type="submit" value="x">
+ 			 		<?php endif; ?>
+ 			 	</form>
  			 	<p><?php echo "{$post['message']}";?></p>
 		 	</div>
 		 	<div class="expander">EXPAND COMMENTS</div>
