@@ -14,6 +14,12 @@ label{
 h1,h2,h3,h4,h5{
 	font-weight: 300;
 }
+hr{
+	background-color: white;
+	height:.2vh;
+	outline:none;
+	border:none;
+}
 /* id's */
 #index_head_container{
 	background-color: #222;
@@ -26,7 +32,7 @@ h1,h2,h3,h4,h5{
 	margin: 0 auto;
 	width: 100%;
 	padding-top: 3vh;
-	background-color: #3E528B;
+	background-color: #29B6F6;
 }
 #login_container label{
 	color:white;
@@ -64,7 +70,7 @@ h1,h2,h3,h4,h5{
 #navbar{
 	height: 30px;
 	width:fill;
-	background-color: #3E528B;
+	background-color: #4FC3F7;
 	padding: 15px;
 }
 #left_navbar{
@@ -103,7 +109,7 @@ h1,h2,h3,h4,h5{
 	padding-right: 10%;
 	padding-top:3%;
 	padding-bottom:3%;
-	background-color: #3E528B;
+	background-color: #4FC3F7;
 }
 #post_container h2{
 	margin:0;
@@ -158,7 +164,7 @@ h1,h2,h3,h4,h5{
 	outline:none;
 	width: 150px;
 	font-size: 12pt;
-	background-color: #6071A5;
+	background-color: #4FC3F7;
 	border-radius: 4px;
 	color:white;
 }
@@ -188,7 +194,7 @@ h1,h2,h3,h4,h5{
 	background-color: white;
 	border-radius: 2px;
 	vertical-align: top;
-	box-shadow: 0px 0px 1px 1px gray;
+	box-shadow: 0px 0px 1px 1px silver;
 }
 .user_post h5{
 	margin:0;
@@ -214,10 +220,8 @@ h1,h2,h3,h4,h5{
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 	text-align: center;
-	-moz-box-shadow: inset 0 0 5px #000000;
-   	-webkit-box-shadow: inset 0 0 5px #000000;
-   	box-shadow: inset 0 0 5px #000000;
-	background-color: #3E528B;
+	box-shadow:1px 1px 2px silver;
+	background-color: #29B6F6;
 }
 .comment_form{
 	width: 40.7vw;
@@ -266,7 +270,8 @@ h1,h2,h3,h4,h5{
 	padding-top: .5em;
 	padding-bottom:.5em;
 	font-size: 8pt;
-	background-color:#6071A5;
+	box-shadow: 1px 1px 2px silver;
+	background-color:#4FC3F7;
 }
 .comment_holder {
 	text-align: right;
@@ -275,8 +280,9 @@ h1,h2,h3,h4,h5{
 	height: auto;
 	padding-left: 1vw;
 	vertical-align: top;
-	background-color: #6071A5;
+	background-color: #4FC3F7;
 	color: white;
+	box-shadow:1px 1px 2px silver;
 	padding-top: 2em;
 }
 .comment_holder h5{

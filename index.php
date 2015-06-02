@@ -29,7 +29,9 @@
 		<div id="register_container">
 			<form class="index_form" action="process.php" method="post">
 				<h2>Register: </h2>
-				<?php if(isset($_SESSION['errors'])):
+				<?php 
+				//error handling
+				if(isset($_SESSION['errors'])):
 				foreach($_SESSION['errors'] AS $error):?>
 				<p class="errors"><?=$error?></p>
 				<?php endforeach?>
